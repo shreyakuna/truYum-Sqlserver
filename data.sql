@@ -19,14 +19,18 @@ GO
 SELECT * FROM menu_item
 GO
 
---Frame SQL query to get all menu items which after launch date and is active.SELECT * FROM menu_item 
+--Frame SQL query to get all menu items which after launch date and is active.
+SELECT * FROM menu_item 
 WHERE Date_of_launch < GETDATE() and Active='Yes'
 GO
 --Frame SQL query to get a menu items based on Menu Item Id
+
 select * from menu_item where Id=3
 GO
 
---Frame update SQL menu_items table to update all the columns values based on Menu Item Idupdate menu_item
+--Frame update SQL menu_items table to update all the columns values based on Menu Item Id
+
+update menu_item
 set price=170 
 where Id= 3
 Go
@@ -45,17 +49,20 @@ INSERT INTO cart_table VALUES (2,3,'Pizza',149.00,'No'),(2,4,'French Fries',57.0
 
 GO
 
---Frame SQL query to get all menu items in a particular user’s cart
+--Frame SQL query to get all menu items in a particular userâ€™s cart
+
 SELECT ct.* FROM cart_table ct
 join user_table ut on ct.User_id=ut.Id
 WHERE ut.Id=2
 GO
---Frame SQL query to get the total price of all menu items in a particular user’s cart
+--Frame SQL query to get the total price of all menu items in a particular userâ€™s cart
 
 SELECT sum(ct.Price) AS Total FROM cart_table ct
 join user_table ut on ct.User_id=ut.Id
 WHERE ut.Id=2
 GO
---Frame SQL query to remove a menu items from Cart based on User Id and Menu Item IdDELETE FROM cart_table
+--Frame SQL query to remove a menu items from Cart based on User Id and Menu Item Id
+
+DELETE FROM cart_table
 WHERE User_id=2 and menu_item_id = 4
 GO
